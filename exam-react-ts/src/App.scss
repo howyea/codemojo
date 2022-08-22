@@ -1,0 +1,28 @@
+.questionNum {
+  font-size: 30px;
+  .current {
+    color: #ff0000;
+  }
+}
+.question {
+  font-size: 16px;
+  margin: 10px;
+  font-weight: bold;
+}
+.answerItem {
+  display: flex;
+  align-items: center; 
+  padding-left: 20px;
+  margin-bottom: 6px;
+  .singleChoice {
+    width: 8px;
+    height: 8px;
+    border: 1px solid #000000;
+    border-radius: 50%;
+  }
+  .word {
+    font-size: 14px;
+    margin-left: 8px;
+  }
+}
+
