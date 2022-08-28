@@ -21,6 +21,9 @@
       height: 8px;
       border: 1px solid #000000;
       border-radius: 50%;
+      &.isChoiced {
+        background-color: #ff0000;
+      }
     }
     .word {
       font-size: 14px;

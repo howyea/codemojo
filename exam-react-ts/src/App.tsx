@@ -5,12 +5,26 @@ import questionList from './data.ts'
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const getAnswerChoice = () => {
+    return questionList[currentIndex].answer.map((value: string, index: number) => {
+      return false;
+    })
+  }
+  const [currentAnswerChoice, setCurrentAnswerChoice] = useState<boolean[]>(getAnswerChoice());
   const changeCurrentIndex = (type: "prev" | "next") => {
     if (type === "prev" && currentIndex !== 0) {
       setCurrentIndex(currentIndex-1);
     } else if (type ==="next" && currentIndex !== questionList.length - 1) {
       setCurrentIndex(currentIndex+1);
     }
+  }
+  // 单选，点击之后还需要将其他的选项设为false
+  const choiceItem = (num: number) => {
+    const _arr: boolean[] = currentAnswerChoice;
+    const _new_arr: boolean[] = _arr.map((value: boolean, index: number) => {
+      return num === index ? true : false;
+    });
+    setCurrentAnswerChoice(_new_arr);
   }
   return (
     <div className="app">
@@ -19,7 +33,7 @@ function App() {
       <div>
       {
         questionList[currentIndex].answer.map((value: string, index: number) => {
-          return <div key={value+index} className="answerItem"><div className="singleChoice"></div><div className="word">{value}</div></div>
+          return <div key={value+index} className="answerItem" onClick={() => choiceItem(index)}><div className={`singleChoice ${currentAnswerChoice[index] ? "isChoiced" : ""}`}></div><div className="word">{value}</div></div>
         })
       }
       </div>
