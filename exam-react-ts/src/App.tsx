@@ -5,16 +5,19 @@ import questionList from './data.ts'
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const getAnswerChoice = () => {
-    return questionList[currentIndex].answer.map((value: string, index: number) => {
+  // 为了获取当前题目的选项
+  const getAnswerChoice = (current: number) => {
+    return questionList[current].answer.map((value: string, index: number) => {
       return false;
     })
   }
-  const [currentAnswerChoice, setCurrentAnswerChoice] = useState<boolean[]>(getAnswerChoice());
+  const [currentAnswerChoice, setCurrentAnswerChoice] = useState<boolean[]>(getAnswerChoice(currentIndex));
   const changeCurrentIndex = (type: "prev" | "next") => {
     if (type === "prev" && currentIndex !== 0) {
+      setCurrentAnswerChoice(getAnswerChoice(currentIndex-1));
       setCurrentIndex(currentIndex-1);
     } else if (type ==="next" && currentIndex !== questionList.length - 1) {
+      setCurrentAnswerChoice(getAnswerChoice(currentIndex+1));
       setCurrentIndex(currentIndex+1);
     }
   }
