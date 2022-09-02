@@ -4,6 +4,7 @@ import './App.scss'
 import {QuestionType, questionList} from './data.ts'
 
 import QuestionNum from './components/QuestionNum.tsx'
+import Question from './components/Question'
 function App() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   // 记录每一个题目的选项索引
@@ -39,7 +40,6 @@ function App() {
   }
   return (
     <div className="app">
-      <div className="question">{questionList[currentIndex].question}</div>
       <div>
       {
         questionList[currentIndex].answer.map((value: string, index: number) => {
@@ -53,6 +53,7 @@ function App() {
         <div className="btn" onClick={() => {changeCurrentIndex("next")}}>下一题</div>
       </div>
       <QuestionNum currentIndex={currentIndex} questionList={questionList} />
+      <Question question={questionList[currentIndex].questson} />
     </div>  
   )
 }
