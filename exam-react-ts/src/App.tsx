@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import './App.scss'
 import {QuestionType, questionList} from './data.ts'
 
+import QuestionNum from './components/QuestionNum.tsx'
 function App() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   // 记录每一个题目的选项索引
@@ -38,7 +39,6 @@ function App() {
   }
   return (
     <div className="app">
-      <div className="questionNum"><span className="current">{currentIndex + 1}</span>/<span className="all">{questionList.length}</span></div>
       <div className="question">{questionList[currentIndex].question}</div>
       <div>
       {
@@ -52,6 +52,7 @@ function App() {
         <div className="btn" onClick={() => {changeCurrentIndex("prev")}}>上一题</div>
         <div className="btn" onClick={() => {changeCurrentIndex("next")}}>下一题</div>
       </div>
+      <QuestionNum currentIndex={currentIndex} questionList={questionList} />
     </div>  
   )
 }
