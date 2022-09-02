@@ -5,6 +5,7 @@ import {QuestionType, questionList} from './data.ts'
 
 import QuestionNum from './components/QuestionNum.tsx'
 import Question from './components/Question'
+import Explain from './components/Explain'
 function App() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   // 记录每一个题目的选项索引
@@ -47,13 +48,13 @@ function App() {
         })
       }
       </div>
-      <div className="explain">{questionList[currentIndex].explain}</div>
       <div className="btnBox">
         <div className="btn" onClick={() => {changeCurrentIndex("prev")}}>上一题</div>
         <div className="btn" onClick={() => {changeCurrentIndex("next")}}>下一题</div>
       </div>
       <QuestionNum currentIndex={currentIndex} questionList={questionList} />
       <Question question={questionList[currentIndex].questson} />
+      <Explain explain={questionList[currentIndex].explain}/>
     </div>  
   )
 }
